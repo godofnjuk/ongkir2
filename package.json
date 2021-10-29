@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "engines": {
     "node": "9.5.0"
+	"npm":"6.4.15"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
