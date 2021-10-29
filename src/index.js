@@ -196,7 +196,7 @@ app.get('/login',async (req, res) => {
 app.get('/', (_, res) => {
 	//console.log("asu");
 	//var a = loadkota();
-  res.status(200).send('Hello Wixaklaskjldaskjldaslkj!');
+  res.status(200).send('Hello Wix asik!');
 });
   
 app.get('/instance',async (req, res) => {
