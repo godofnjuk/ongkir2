@@ -235,7 +235,7 @@ app.get('/dashboard',async (req, res) => {
 	var a = await loadkota();
 	
 	//console.log(JSON.stringify(a));
-	console.log('dashboard');
+	console.log(a);
   res.render('dashboard', {  title: 'Dashboard',data:a});
 });
 app.post('/dashboard',async (req, res) => {
