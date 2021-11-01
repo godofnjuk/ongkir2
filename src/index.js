@@ -26,7 +26,7 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
-app.use(cors());
+//app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
@@ -55,7 +55,7 @@ function getOngkir(body){
   const options = {
   headers: {'Content-Type': 'application/json','Content-Length': JSON.stringify(body).length}
 };
-  return axios.post('https://api.rajaongkir.com/starter/cost',JSON.stringify(body),options).then((response)=>{
+  return axios.post('http://api.rajaongkir.com/starter/cost',JSON.stringify(body),options).then((response)=>{
 	  if(response.status==200){
 		  return response;
 	  }
@@ -72,7 +72,7 @@ async function loadkota(){
 	//const response = await fetch('https://api.rajaongkir.com/starter/city?key='+token+'&format=json')
 	//const responseJson = await response.json();
 	//return responseJson.rajaongkir.results;
-	return axios.get('https://api.rajaongkir.com/starter/city?key='+token+'&format=json')
+	return axios.get('http://api.rajaongkir.com/starter/city?key='+token+'&format=json')
 	.then(function(response){
 		//console.log(JSON.stringify(response.data.rajaongkir.results));
 		
