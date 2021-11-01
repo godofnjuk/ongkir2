@@ -26,7 +26,7 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
-//app.use(cors());
+app.use(cors({origin:new URL(process.env.PORT),credentials:true}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
