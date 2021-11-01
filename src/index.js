@@ -66,6 +66,7 @@ function getOngkir(body){
 async function loadkota(){
 	const token = '3b37348ce9c524276f0defba2504bd37';
 	const respons = '';
+	console.log('loadkota');
 	//const handleAsJson = response => response.json();
 	//const handleError = console.error // or some such;
 	//const response = await fetch('https://api.rajaongkir.com/starter/city?key='+token+'&format=json')
@@ -79,7 +80,7 @@ async function loadkota(){
 		//return respons;
 	})
 	.catch(function(error){
-		console.log(error);
+		console.log('error : '+error);
 	});
 	//return respons;
 }
