@@ -26,6 +26,24 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
+/*const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});*/
 //app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
@@ -511,4 +529,4 @@ async function getPayments(refreshToken)
   }
 };
 
-app.listen(port, () => console.log(`My Wix Application ${APP_ID} is listening on port ${port}!`));
+app.listen(port, "0.0.0.0", () => console.log(`My Wix Application ${APP_ID} is listening on port ${port}!`));
