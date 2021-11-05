@@ -26,10 +26,11 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
-/*const { Client } = require('pg');
+
+const { Client } = require('pg');
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: 'postgres://bcajsmwzgswppl:fb9086ccc27b46d526f5ff32e80a75b31a87492b4d7ea4a0a060cad516b3c8df@ec2-18-235-192-50.compute-1.amazonaws.com:5432/d5gojl3fqmbpik',
   ssl: {
     rejectUnauthorized: false
   }
@@ -37,13 +38,33 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+client.query('SELECT * FROM ongkir3;', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
   client.end();
-});*/
+});
+/*
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: 'bcajsmwzgswppl',
+  host: 'ec2-18-235-192-50.compute-1.amazonaws.com',
+  database: 'd5gojl3fqmbpik',
+  password: 'fb9086ccc27b46d526f5ff32e80a75b31a87492b4d7ea4a0a060cad516b3c8df',
+  port: 5432,
+})
+
+const getUsers = (request, response) => {
+  pool.query('SELECT * FROM ongkir ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+	  console.log(error);
+    }
+    response.status(200).json(results.rows)
+  })
+}*/
+
 //app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
@@ -215,6 +236,7 @@ app.get('/login',async (req, res) => {
 app.get('/', (_, res) => {
 	//console.log("asu");
 	//var a = loadkota();
+  //console.log(a);
   res.status(200).send('Hello Wix asik!');
 });
   
