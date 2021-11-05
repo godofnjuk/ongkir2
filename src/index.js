@@ -252,11 +252,11 @@ app.get('/page',async (req, res) => {
 	var b= []
 	//console.log(JSON.stringify(a));
 	console.log('PAGELOAD');
-  res.render('page', {  title: 'Wix Application',data:a,data2:b});
+  res.render('page', {  title: 'Shipment Cost',data:a,data2:b});
 });
 app.get('/dashboard',async (req, res) => {
 	var a = await loadkota();
-	
+	var instanceId = Wix.Utils.getInstanceId();
 	//console.log(JSON.stringify(a));
 	//console.log(a);
   res.render('dashboard', {  title: 'Dashboard',data:a});

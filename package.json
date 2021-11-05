@@ -22,10 +22,9 @@
     "typescript": "~3.0.1"
   },
   "scripts": {
-    "start": "nodemon app/server.js",
+    "start": "nodemon src/index.js",
     "clean": "rimraf coverage build tmp",
     "watch": "nodemon src/index.js",
-    "start": "nodemon src/index.js",
     "pretest": "npm run lint",
     "test": "npm run test-only",
     "test-only": "jest --coverage",
@@ -49,6 +48,7 @@
     "psql": "0.0.1",
     "pug": "^2.0.4",
     "tslib": "~1.9.3",
-    "wix-data": "0.0.1-security"
+    "wix-data": "0.0.1-security",
+    "wix-sdk": "^1.90.0"
   }
 }
