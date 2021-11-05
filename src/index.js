@@ -242,6 +242,13 @@ app.get('/instance',async (req, res) => {
     return;
   }
 });
+app.get('/privacy',async (req, res) => {
+  var a = await loadkota();
+	//var instanceId = Wix.Utils.getInstanceId();
+	//console.log(JSON.stringify(a));
+	//console.log(a);
+  res.render('privacy', {  title: 'Privacy',data:a});
+});
 
 app.get('/page',async (req, res) => {
 	console.log(kotaku);
@@ -256,54 +263,13 @@ app.get('/page',async (req, res) => {
 });
 app.get('/dashboard',async (req, res) => {
 	var a = await loadkota();
-	var instanceId = Wix.Utils.getInstanceId();
+	//var instanceId = Wix.Utils.getInstanceId();
 	//console.log(JSON.stringify(a));
 	//console.log(a);
   res.render('dashboard', {  title: 'Dashboard',data:a});
 });
 app.post('/dashboard',async (req, res) => {
 	var a = await loadkota();
-	const authorizationCode = req.query.code;
-
-  console.log("authorizationCode = " + authorizationCode);
-
-  let refreshToken, accessToken;
-  try {
-    console.log("getting Tokens From Wix ");
-    console.log("=======================");
-    const data = await getTokensFromWix(authorizationCode);
-
-    refreshToken = data.refresh_token;
-    accessToken = data.access_token;
-
-    //const refreshToken = req.query.token;
-	//simpankota = req.body.kota;
-	instance = await getAppInstance(refreshToken);
-  client.query('INSERT INTO ongkir4 ($market_id,$origin);',[instance.instance.instanceId,req.body.kota], (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
-
-    // TODO: Save the instanceId and tokens for future API calls
-    console.log("=============================");
-    console.log(`User's site instanceId: ${instance.instance.instanceId}`);
-    console.log("=============================");
-
-    // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
-
-    
-  } catch (wixError) {
-    console.log("Error getting token from Wix");
-    console.log({wixError});
-    res.status(500);
-    return;
-  }
-	
-	
-	
 	//console.log(JSON.stringify(a));
 	console.log('kotaku : '+simpankota);
   res.render('dashboard', {  title: 'Dashboard',data:a});
@@ -334,7 +300,7 @@ app.post('/page', async (req, res)=> {
 		});
 	})
 	//console.log(b);
-    res.render('page', {title: 'Wix Application',data:a,data2:b});
+    res.render('page', {title: 'Shipment Cost',data:a,data2:b});
 });
 app.get('/products',async (req, res) => {
   
