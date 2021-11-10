@@ -112,7 +112,7 @@ app.post('/webhook-callback', (req, res) => {
   console.log("app id ",APP_ID);
   console.log("app secret ",APP_SECRET);
   console.log("public key ",PUBLIC_KEY);
-  const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["HS256"] });
+  const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData =  JSON.parse(data.data);
   const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
   console.log('webhook event data after verification:', prettyData);
