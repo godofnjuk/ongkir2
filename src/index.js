@@ -171,7 +171,7 @@ app.get('/login',async (req, res) => {
   console.log("got a call from Wix for login");
   console.log("=============================");
 
-  const authorizationCode = req.query.code;
+  const authorizationCode = req.query.id;
 
   console.log("authorizationCode = " + authorizationCode);
 
