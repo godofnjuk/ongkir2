@@ -19,7 +19,7 @@ const INSTANCE_API_URL = 'https://www.wixapis.com/apps/v1';
 const STORE_CATALOG_API_URL = 'https://www.wixapis.com/stores/v1';
 const STORE_ORDERS_API_URL = 'https://www.wixapis.com/stores/v2';
 const PAYMENTS_API_URL = 'https://cashier.wix.com/_api/payment-services-web/merchant/v2';
-const CART_URL - 'https://www.wixapis.com/stores/v1/carts';
+const CART_URL ='https://www.wixapis.com/stores/v1/carts';
 var kotaku=12;
 var beratku=1000;
 var simpankota =256;
