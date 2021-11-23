@@ -19,6 +19,7 @@ const INSTANCE_API_URL = 'https://www.wixapis.com/apps/v1';
 const STORE_CATALOG_API_URL = 'https://www.wixapis.com/stores/v1';
 const STORE_ORDERS_API_URL = 'https://www.wixapis.com/stores/v2';
 const PAYMENTS_API_URL = 'https://cashier.wix.com/_api/payment-services-web/merchant/v2';
+const CART_URL - 'https://www.wixapis.com/stores/v1/carts';
 var kotaku=12;
 var beratku=1000;
 var simpankota =256;
@@ -59,6 +60,12 @@ function getTokensFromWix (authCode) {
     client_secret: APP_SECRET,
     client_id: APP_ID,
     grant_type: "authorization_code",
+  }).then((resp) => resp.data);
+}
+
+function getCart (id) {
+  return axios.get(`${CART_URL}/id`, {
+    
   }).then((resp) => resp.data);
 }
 
@@ -133,6 +140,8 @@ app.post('/order', async(req, res) => {
   const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
   console.log('webhook event data after verification:', prettyData);
   console.log("ordernya : "+JSON.stringify(prettyData.data.data));
+  console.log("cart id : "+JSON.stringify(prettyData.data.data.cartId));
+  console.log("isi cart : "+JSON.stringify(getCart(prettyData.data.data.cartId)));
   beratku = prettyData.data.data.totals.weight;
   //console.log(prettyData.data.data.billingInfo);
   //console.log(prettyData.data.data.billingInfo.address.city);
