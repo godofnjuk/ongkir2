@@ -70,7 +70,11 @@ function getCart (id) {
 		//console.log(JSON.stringify(response.data.rajaongkir.results));
 		
 		return response.data;
-}
+		//return respons;
+	})
+	.catch(function(error){
+		console.log('error : '+error);
+	});
 }
 
 function getAccessToken (refreshToken) {
