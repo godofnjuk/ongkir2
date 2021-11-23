@@ -66,7 +66,10 @@ function getTokensFromWix (authCode) {
 function getCart (id) {
   return axios.get(`${CART_URL}/id`, {
     
-  }).then((resp) => resp.data);
+  }).then(function(response){
+		//console.log(JSON.stringify(response.data.rajaongkir.results));
+		
+		return response.data;
 }
 
 function getAccessToken (refreshToken) {
@@ -140,7 +143,7 @@ app.post('/order', async(req, res) => {
   const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
   console.log('webhook event data after verification:', prettyData);
   console.log("ordernya : "+JSON.stringify(prettyData.data.data));
-  console.log("cart id : "+JSON.stringify(prettyData.data.cartId));
+  console.log("cart id : "+JSON.stringify(prettyData.data.data.cartId));
   console.log("isi cart : "+JSON.stringify(getCart(prettyData.data.data.cartId)));
   beratku = prettyData.data.data.totals.weight;
   //console.log(prettyData.data.data.billingInfo);
