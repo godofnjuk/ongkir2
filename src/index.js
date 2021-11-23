@@ -71,6 +71,7 @@ function getCart (id) {
 		
 		return response.data;
 }
+}
 
 function getAccessToken (refreshToken) {
   return axios.post(`${AUTH_PROVIDER_BASE_URL}/access`, {
