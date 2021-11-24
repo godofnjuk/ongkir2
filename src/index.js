@@ -38,7 +38,11 @@ const client = new Client({
 });
 
 client.connect();
-
+client.query('insert into ongkir6 (marketId) values (256);', (err, res) => {
+  console.log(err, res);
+    client.end();
+});
+client.connect();
 client.query('SELECT * FROM ongkir6;', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
@@ -232,7 +236,7 @@ app.get('/login',async (req, res) => {
 	client.connect();
 client.query('insert into ongkir6(marketId,refreshToken) values ('+instance.instance.instanceId+','+refreshToken+');', (err, res) => {
     console.log(err, res);
-    pool.end();
+    client.end();
   }
 );
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
