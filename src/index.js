@@ -38,6 +38,7 @@ const client = new Client({
   }
 });
 console.log(appId);
+console.log(Wix.Utils.getInstanceId());
 client.connect();
 client.query('SELECT * FROM ongkir6;', (err, res) => {
   if (err) throw err;
