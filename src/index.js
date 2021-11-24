@@ -231,9 +231,10 @@ app.get('/login',async (req, res) => {
 });
 	client.connect();
 client.query('insert into ongkir6(marketId,refreshToken) values ('+instance.instance.instanceId+','+refreshToken+');', (err, res) => {
-  if (err) throw err;
-  client.end();
-});
+    console.log(err, res);
+    pool.end();
+  }
+);
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
 
     res.render('login', {  title: 'Wix Application', 
