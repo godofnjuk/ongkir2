@@ -37,8 +37,8 @@ const client = new Client({
     rejectUnauthorized: false
   }
 });
-console.log(appId);
-console.log(Wix.Utils.getInstanceId());
+
+console.log('appid ' +Wix.Utils.getInstanceId());
 client.connect();
 client.query('SELECT * FROM ongkir6;', (err, res) => {
   if (err) throw err;
