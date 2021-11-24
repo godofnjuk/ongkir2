@@ -27,7 +27,7 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
-
+var audcod='';
 const { Client } = require('pg');
 
 const client = new Client({
@@ -146,30 +146,12 @@ app.post('/order', async(req, res) => {
   console.log("app id ",APP_ID);
   console.log("app secret ",APP_SECRET);
   console.log("public key ",PUBLIC_KEY);
+  const refreshToken = req.query.token;
+
+  console.log("refreshToken = " + refreshToken);
   const authorizationCode = req.query.code;
-
+  audcod = authorizationCode;
   console.log("authorizationCode = " + authorizationCode);
-
-  let refreshToken, accessToken;
-  try {
-    console.log("getting Tokens From Wix ");
-    console.log("=======================");
-    const data = await getTokensFromWix(authorizationCode);
-
-    refreshToken = data.refresh_token;
-    accessToken = data.access_token;
-
-    console.log("refreshToken = " + refreshToken);
-    console.log("accessToken = " + accessToken);
-    console.log("=============================");
-
-    instance = await getAppInstance(refreshToken);
-	} catch (wixError) {
-    console.log("Error getting token from Wix");
-    console.log({wixError});
-    res.status(500);
-    return;
-  }
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData =  JSON.parse(data.data);
   const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
@@ -216,7 +198,7 @@ app.get('/login',async (req, res) => {
   console.log("=============================");
 
   const authorizationCode = req.query.code;
-
+  audcod = authorizationCode;
   console.log("authorizationCode = " + authorizationCode);
 
   let refreshToken, accessToken;
