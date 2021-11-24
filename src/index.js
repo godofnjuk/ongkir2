@@ -149,7 +149,7 @@ app.post('/order', async(req, res) => {
   console.log('webhook event data after verification:', prettyData);
   console.log("ordernya : "+JSON.stringify(prettyData.data.data));
   console.log("cart id : "+JSON.stringify(prettyData.data.data.cartId));
-  console.log("isi cart : "+JSON.stringify(getCart(prettyData.data.data.cartId)));
+  console.log("isi cart : "+getCart(prettyData.data.data.cartId));
   beratku = prettyData.data.data.totals.weight;
   //console.log(prettyData.data.data.billingInfo);
   //console.log(prettyData.data.data.billingInfo.address.city);
