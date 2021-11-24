@@ -38,14 +38,6 @@ const client = new Client({
 });
 
 client.connect();
-client.query('insert into ongkir6 (marketId) values (256);', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
-client.connect();
 client.query('SELECT * FROM ongkir6;', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
