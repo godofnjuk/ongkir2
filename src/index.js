@@ -63,9 +63,12 @@ function getTokensFromWix (authCode) {
   }).then((resp) => resp.data);
 }
 
-function getCart (id) {
+function getCart (authCode,id) {
   return axios.get(`${CART_URL}/id`, {
-    
+    code: authCode,
+    client_secret: APP_SECRET,
+    client_id: APP_ID,
+    grant_type: "authorization_code",
   }).then(function(response){
 		//console.log(JSON.stringify(response.data.rajaongkir.results));
 		
@@ -143,6 +146,30 @@ app.post('/order', async(req, res) => {
   console.log("app id ",APP_ID);
   console.log("app secret ",APP_SECRET);
   console.log("public key ",PUBLIC_KEY);
+  const authorizationCode = req.query.code;
+
+  console.log("authorizationCode = " + authorizationCode);
+
+  let refreshToken, accessToken;
+  try {
+    console.log("getting Tokens From Wix ");
+    console.log("=======================");
+    const data = await getTokensFromWix(authorizationCode);
+
+    refreshToken = data.refresh_token;
+    accessToken = data.access_token;
+
+    console.log("refreshToken = " + refreshToken);
+    console.log("accessToken = " + accessToken);
+    console.log("=============================");
+
+    instance = await getAppInstance(refreshToken);
+	} catch (wixError) {
+    console.log("Error getting token from Wix");
+    console.log({wixError});
+    res.status(500);
+    return;
+  }
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData =  JSON.parse(data.data);
   const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
