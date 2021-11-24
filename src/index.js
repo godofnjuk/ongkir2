@@ -209,13 +209,7 @@ app.get('/login',async (req, res) => {
 
     refreshToken = data.refresh_token;
     accessToken = data.access_token;
-client.query('insert into ongkir6(marketId,refreshToken) values ();', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
+
     console.log("refreshToken = " + refreshToken);
     console.log("accessToken = " + accessToken);
     console.log("=============================");
@@ -229,6 +223,7 @@ client.query('insert into ongkir6(marketId,refreshToken) values ();', (err, res)
     console.log("=============================");
     console.log(`User's site instanceId: ${instance.instance.instanceId}`);
     console.log("=============================");
+	client.connect();
 client.query('insert into ongkir6(marketId,refreshToken) values (${instance.instance.instanceId},${refreshToken});', (err, res) => {
   if (err) throw err;
   client.end();
