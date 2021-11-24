@@ -231,9 +231,6 @@ client.query('insert into ongkir6(marketId,refreshToken) values ();', (err, res)
     console.log("=============================");
 client.query('insert into ongkir6(marketId,refreshToken) values (${instance.instance.instanceId},${refreshToken});', (err, res) => {
   if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
   client.end();
 });
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
