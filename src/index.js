@@ -230,7 +230,7 @@ app.get('/login',async (req, res) => {
 });
 
 client.connect();
-client.query('insert into ongkir6(marketId,refreshToken) values ('+instance.instance.instanceId+','+refreshToken+');', (err, res) => {
+client.query("insert into ongkir6(marketId,refreshToken) values ('"+instance.instance.instanceId+"','"+refreshToken+"');", (err, res) => {
     console.log(err, res);
     client.end();
   }
