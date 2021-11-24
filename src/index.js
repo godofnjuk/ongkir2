@@ -2,6 +2,7 @@
 //import fetch from 'node-fetch';
 //const fetch = require('node-fetch');
 //import wixdata from 'wix-data';
+const Wix = require('wix-sdk');
 const cors = require('cors');
 const axios = require('axios');
 const bodyParser = require('body-parser');
