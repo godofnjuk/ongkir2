@@ -27,7 +27,8 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
-var audcod='';
+global.appId='coeg';
+global.toks ='coeg';
 const { Client } = require('pg');
 
 const client = new Client({
@@ -36,7 +37,7 @@ const client = new Client({
     rejectUnauthorized: false
   }
 });
-
+console.log(appId);
 client.connect();
 client.query('SELECT * FROM ongkir6;', (err, res) => {
   if (err) throw err;
@@ -78,7 +79,9 @@ function getCart (authCode,id) {
 		console.log('error : '+error);
 	});
 }
-
+function saveIt(appId,refreshToken){
+	
+}
 function getAccessToken (refreshToken) {
   return axios.post(`${AUTH_PROVIDER_BASE_URL}/access`, {
     refresh_token: refreshToken,
