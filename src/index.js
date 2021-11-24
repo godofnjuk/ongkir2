@@ -223,6 +223,12 @@ app.get('/login',async (req, res) => {
     console.log("=============================");
     console.log(`User's site instanceId: ${instance.instance.instanceId}`);
     console.log("=============================");
+	const client = new Client({
+  connectionString: 'postgres://bcajsmwzgswppl:fb9086ccc27b46d526f5ff32e80a75b31a87492b4d7ea4a0a060cad516b3c8df@ec2-18-235-192-50.compute-1.amazonaws.com:5432/d5gojl3fqmbpik',
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 	client.connect();
 client.query('insert into ongkir6(marketId,refreshToken) values (${instance.instance.instanceId},${refreshToken});', (err, res) => {
   if (err) throw err;
