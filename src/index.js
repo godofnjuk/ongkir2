@@ -257,19 +257,7 @@ app.get('/', (_, res) => {
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
-  res.render('login', {  title: 'Wix Application', 
-                              app_id: APP_ID,
-                              site_display_name: instance.site.siteDisplayName,
-                              instance_id: instance.instance.instanceId, 
-                              permissions: instance.instance.permissions, 
-                              token: refreshToken,
-                              response: JSON.stringify(instance, null, '\t')});
-  } catch (wixError) {
-    console.log("Error getting token from Wix");
-    console.log({wixError});
-    res.status(500);
-    return;
-  }});
+  
   res.status(200).send('Hello Wix asik!');
 });
   
