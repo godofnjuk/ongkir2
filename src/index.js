@@ -150,7 +150,7 @@ app.post('/order', async(req, res) => {
   const refreshToken = req.query.token;
 
   console.log("refreshToken = " + refreshToken);
-  const authorizationCode = req.query.code;
+  //const authorizationCode = req.query.code;
   audcod = authorizationCode;
   console.log("authorizationCode = " + authorizationCode);
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
