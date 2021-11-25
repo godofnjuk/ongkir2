@@ -1,8 +1,8 @@
 //const async  = require('express-async-await')
 //import fetch from 'node-fetch';
 //const fetch = require('node-fetch');
-//import wixdata from 'wix-data';
-const Wix = require('wix-sdk');
+//import Wix from 'wix-sdk';
+//const Wix = require('wix-sdk');
 const cors = require('cors');
 const axios = require('axios');
 const bodyParser = require('body-parser');
@@ -28,8 +28,6 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
-global.appId='coeg';
-global.toks ='coeg';
 const { Client } = require('pg');
 
 const client = new Client({
@@ -39,7 +37,7 @@ const client = new Client({
   }
 });
 
-console.log('appid ' +Wix.Utils.getInstanceId());
+//console.log('appid ' +Wix.Utils.getInstanceId());
 client.connect();
 client.query('SELECT * FROM ongkir6;', (err, res) => {
   if (err) throw err;
@@ -80,9 +78,6 @@ function getCart (authCode,id) {
 	.catch(function(error){
 		console.log('error : '+error);
 	});
-}
-function saveIt(appId,refreshToken){
-	
 }
 function getAccessToken (refreshToken) {
   return axios.post(`${AUTH_PROVIDER_BASE_URL}/access`, {
@@ -145,6 +140,8 @@ app.post('/webhook-callback', (req, res) => {
 app.post('/order', async(req, res) => {
   var a = await loadkota();
   //console.log(a);
+  const authorizationCode = req.query.code;
+  console.log("code "+authorizationCode);
   console.log('got webhook order event from Wix!', req.body);
   console.log("===========================");
   console.log("app id ",APP_ID);

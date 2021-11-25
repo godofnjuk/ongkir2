@@ -1,3 +1,4 @@
+
 {
   "name": "tpe-poc",
   "version": "1.0.0",
@@ -42,7 +43,8 @@
     "express-async-await": "^1.1.0",
     "json-server": "^0.17.0",
     "jsonwebtoken": "^8.5.1",
-    "node-fetch": "^3.0.0",
+    "node-fetch": "^3.1.0",
+    "nvm": "0.0.4",
     "pg": "^8.7.1",
     "postgres": "^1.0.2",
     "psql": "0.0.1",
