@@ -277,8 +277,7 @@ app.get('/', (_, res) => {
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
-  simpanLocal('haiya');
-getLocal('tokenmu');
+getLocal('dataku');
   
   res.render('start', {  title: 'start'});
   //console.log(Wix.Utils.getInstanceId());
