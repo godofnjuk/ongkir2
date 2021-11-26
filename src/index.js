@@ -68,7 +68,7 @@ function simpanLocal (nama,b){
 	store(nama,b);
 }
 function getLocal(nama){
-	console.log('local storek : '+ store(nama));
+	console.log('local storek : '+ JSON.stringify(store(nama)));
 	return store(nama)
 }
 function getTokensFromWix (authCode) {
