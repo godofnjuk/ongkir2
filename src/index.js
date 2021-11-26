@@ -64,11 +64,12 @@ app.use(bodyParser.json());
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'statics')));
 
-function simpanLocal (b){
-	store('tokenmu',b);
+function simpanLocal (nama,b){
+	store(nama,b);
 }
-function getLocal(b){
-	console.log('local storek : '+ store(b));
+function getLocal(nama){
+	console.log('local storek : '+ store(nama));
+	return store(nama)
 }
 function getTokensFromWix (authCode) {
   return axios.post(`${AUTH_PROVIDER_BASE_URL}/access`, {
@@ -253,6 +254,9 @@ client.query("insert into ongkir6(marketId,refreshToken) values ('"+instance.ins
     client.end();
   }
 );
+
+simpanLocal('dataku',{appInstance:instance.instance.instanceId,refreshToken:refreshToken});
+getLocal('dataku');
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
 
     res.render('login', {  title: 'Wix Application', 
