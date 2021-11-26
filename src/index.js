@@ -29,14 +29,14 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
-(async () => {
+/*(async () => {
     const Wix = await import('wix-sdk');
 
     console.log(`${simple.next()} ${simple.squared()}`);
 	
     console.log(`${simple.next()} ${simple.squared()}`);
     console.log(`${simple.default()} ${simple.squared()}`);
-})().catch(err => console.error(err));
+})().catch(err => console.error(err));*/
 
 const { Client } = require('pg');
 
