@@ -1,4 +1,3 @@
-
 {
   "name": "tpe-poc",
   "version": "1.0.0",
@@ -44,11 +43,13 @@
     "json-server": "^0.17.0",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^3.1.0",
+    "node-localstorage": "^2.2.1",
     "nvm": "0.0.4",
     "pg": "^8.7.1",
     "postgres": "^1.0.2",
     "psql": "0.0.1",
     "pug": "^2.0.4",
+    "store2": "^2.12.0",
     "tslib": "~1.9.3",
     "wix-data": "0.0.1-security",
     "wix-sdk": "^1.90.0"

@@ -1,9 +1,10 @@
 //const async  = require('express-async-await')
 //import fetch from 'node-fetch';
 //const fetch = require('node-fetch');
-//import Wix from 'wix-sdk';
 //const Wix = require('wix-sdk');
+//import Wix from 'wix-sdk';
 const cors = require('cors');
+const store = require('store2')
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const express = require('express');
@@ -28,6 +29,15 @@ const app = express();
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
+(async () => {
+    const Wix = await import('wix-sdk');
+
+    console.log(`${simple.next()} ${simple.squared()}`);
+	
+    console.log(`${simple.next()} ${simple.squared()}`);
+    console.log(`${simple.default()} ${simple.squared()}`);
+})().catch(err => console.error(err));
+
 const { Client } = require('pg');
 
 const client = new Client({
@@ -54,6 +64,12 @@ app.use(bodyParser.json());
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'statics')));
 
+function simpanLocal (b){
+	store('tokenmu',b);
+}
+function getLocal(b){
+	console.log('local storek : '+ store(b));
+}
 function getTokensFromWix (authCode) {
   return axios.post(`${AUTH_PROVIDER_BASE_URL}/access`, {
     code: authCode,
@@ -257,8 +273,12 @@ app.get('/', (_, res) => {
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
+  simpanLocal('haiya');
+getLocal('tokenmu');
   
-  res.status(200).send('Hello Wix asik!');
+  res.render('start', {  title: 'start'});
+  //console.log(Wix.Utils.getInstanceId());
+  //res.status(200).send('Hello Wix asik!');
 });
   
 app.get('/instance',async (req, res) => {
