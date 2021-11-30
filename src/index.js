@@ -209,7 +209,7 @@ app.get('/signup', (req, res) => {
   res.redirect(url);
 });
 
-app.get('/pages/login',async (req, res) => {
+app.get('/login',async (req, res) => {
   // This route  is called once the user finished installing your application and Wix redirects them to your application's site (here).
   // Configure the `App URL` in the Wix Developers to point here
   // *** PUT YOUR LOGIN CODE HERE *** ///
@@ -260,7 +260,7 @@ simpanLocal('dataku',{appInstance:instance.instance.instanceId,refreshToken:refr
 getLocal('dataku');
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
 
-    res.render('login', {  title: 'Wix Application', 
+    res.render('pages/login', {  title: 'Wix Application', 
                               app_id: APP_ID,
                               site_display_name: instance.site.siteDisplayName,
                               instance_id: instance.instance.instanceId, 
