@@ -58,7 +58,7 @@ client.query('SELECT * FROM ongkir6;', (err, res) => {
   client.end();
 });
 getLocal('dataku');
-//app.use(cors());
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
