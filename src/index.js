@@ -26,6 +26,7 @@ var kotaku=12;
 var beratku=1000;
 var simpankota =256;
 const app = express();
+
 var server= require('https').createServer(app);
 const port = process.env.PORT || 3000;
 const incomingWebhooks = [];
@@ -56,12 +57,12 @@ client.query('SELECT * FROM ongkir6;', (err, res) => {
   }
   client.end();
 });
-
+getLocal('dataku');
 //app.use(cors());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'statics')));
 
 function simpanLocal (nama,b){
@@ -208,7 +209,7 @@ app.get('/signup', (req, res) => {
   res.redirect(url);
 });
 
-app.get('/login',async (req, res) => {
+app.get('/pages/login',async (req, res) => {
   // This route  is called once the user finished installing your application and Wix redirects them to your application's site (here).
   // Configure the `App URL` in the Wix Developers to point here
   // *** PUT YOUR LOGIN CODE HERE *** ///
@@ -269,17 +270,30 @@ getLocal('dataku');
   } catch (wixError) {
     console.log("Error getting token from Wix");
     console.log({wixError});
+	res.json({appInstance:instance.instance.instanceId,refreshToken:refreshToken})
     res.status(500);
     return;
   }});
 
-app.get('/', (_, res) => {
+app.get('/', (req, res) => {
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
-getLocal('dataku');
+  console.log("getku "+req.query.appId);
+//getLocal('dataku');
   
-  res.render('start', {  title: 'start'});
+  res.render('pages/start', {  title: 'start', appId:'bejo'});
+  //console.log(Wix.Utils.getInstanceId());
+  //res.status(200).send('Hello Wix asik!');
+});
+
+app.post('/', (req, res) => {
+	console.log("postku "+req.body.appId);
+	//console.log("asu");
+	//var a = loadkota();
+  //console.log(a);
+
+  res.render('pages/start', {  title: 'start', name:'bejo'});
   //console.log(Wix.Utils.getInstanceId());
   //res.status(200).send('Hello Wix asik!');
 });
