@@ -196,7 +196,7 @@ app.post('/order', async(req, res) => {
   res.send(req.body);
 });
 
-app.post('/cart', async(req, res) => {
+app.get('/cart', async(req, res) => {
   console.log('got webhook order event from Wix!', req.body);
   console.log("===========================");
   
