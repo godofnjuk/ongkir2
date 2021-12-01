@@ -179,7 +179,7 @@ app.post('/order', async(req, res) => {
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData =  JSON.parse(data.data);
   const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
-  console.log('webhook event data after verification:', prettyData);
+  console.log('webhook event data after verification:', JSON.stringify(prettyData.data));
   console.log("ordernya : "+JSON.stringify(prettyData.data.data));
   console.log("cart id : "+JSON.stringify(prettyData.data.data.cartId));
   console.log("isi cart : "+JSON.stringify(getCart(prettyData.data.data.cartId)));
