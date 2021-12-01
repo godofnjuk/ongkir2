@@ -5,6 +5,9 @@
 <p></p>
 <script>
 localStorage.setItem("appId", '<%- app_id %>');
+var a = localStorage.getItem("app_id");
+echo a;
+console.log(a);
 </script>
 <h3>The user has granted you the following permissions: </h3>
-<h3>More permissions for your app in <a href="https://dev.wix.com/dc3/my-apps/<%= localStorage.getItem("app_id") %>/workspace/permissions">Wix Developers</a></h3>
+<h3>More permissions for your app in <a href="https://dev.wix.com/dc3/my-apps/<%= app_id %>/workspace/permissions">Wix Developers</a></h3>
