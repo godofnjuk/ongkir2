@@ -289,11 +289,11 @@ var cookie = req.cookies.cookieName;
   }});
 app.get('/logins', (req, res) => {
 	var cookie = req.cookies.cookieName;
-	console.log(cookie);
+	console.log("cookiesku ="cookie);
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
-  console.log("getku "+req.query.appId);
+  //console.log("getku "+req.query.appId);
 //getLocal('dataku');
   
   res.render('pages/login', {  title: 'start', app_id:'bejo'});
