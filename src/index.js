@@ -289,7 +289,7 @@ var cookie = req.cookies.cookieName;
   }});
 app.get('/logins', (req, res) => {
 	var cookie = req.cookies.cookieName;
-	console.log("cookiesku ="+cookie);
+	console.log("cookiesku ="+cookie.instance.instanceId);
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
