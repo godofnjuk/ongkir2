@@ -196,6 +196,14 @@ app.post('/order', async(req, res) => {
   res.send(req.body);
 });
 
+app.post('/cart', async(req, res) => {
+  console.log('got webhook order event from Wix!', req.body);
+  console.log("===========================");
+  
+  incomingWebhooks.push({body: prettyData, headers: req.headers});
+  res.send(req.body);
+});
+
 app.get('/signup', (req, res) => {
   // This route  is called before the user is asked to provide consent
   // Configure the `Redirect URL` in  Wix Developers to point here
