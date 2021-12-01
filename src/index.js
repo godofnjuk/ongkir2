@@ -25,7 +25,7 @@ const CART_URL ='https://www.wixapis.com/stores/v1/carts';
 var kotaku=12;
 var beratku=1000;
 var simpankota =256;
-const cookieParser = require('cookie-parser');
+//const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -59,7 +59,7 @@ client.query('SELECT * FROM ongkir7;', (err, res) => {
   }
   client.end();
 });
-app.use(cookieParser());
+//app.use(cookieParser());
 
 
 getLocal('dataku');
@@ -274,17 +274,7 @@ client.query("insert into ongkir7(marketId,refreshToken) values ('"+instance.ins
     client.end();
   }
 );
-var cookie = req.cookies.cookieName;
-	console.log(cookie);
-  if (cookie === undefined) {
-    res.cookie('cookieName',instance.instance.instanceId, { maxAge: 900000, httpOnly: true });
-    console.log('cookie created successfully');
-  } else {
-	  res.cookie('cookieName',instance.instance.instanceId, { maxAge: 900000, httpOnly: true }); //timpa bae
-    // yes, cookie was already present 
-    console.log('cookie exists', cookie);
-  } 
-  //next(); // <-- important!
+
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
 
     res.render('pages/login', {  title: 'Wix Application', 
@@ -302,8 +292,8 @@ var cookie = req.cookies.cookieName;
     return;
   }});
 app.get('/logins', (req, res) => {
-	var cookie = req.cookies.cookieName;
-	console.log("cookiesku ="+cookie.instance.instanceId);
+	//var cookie = req.cookies.cookieName;
+	//console.log("cookiesku ="+cookie.instance.instanceId);
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
