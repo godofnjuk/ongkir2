@@ -25,6 +25,8 @@ const CART_URL ='https://www.wixapis.com/stores/v1/carts';
 var kotaku=12;
 var beratku=1000;
 var simpankota =256;
+const cookieParser = require('cookie-parser');
+
 const app = express();
 
 var server= require('https').createServer(app);
@@ -57,6 +59,9 @@ client.query('SELECT * FROM ongkir6;', (err, res) => {
   }
   client.end();
 });
+app.use(cookieParser());
+
+
 getLocal('dataku');
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -255,9 +260,17 @@ client.query("insert into ongkir6(marketId,refreshToken) values ('"+instance.ins
     client.end();
   }
 );
-
-simpanLocal('dataku',{appInstance:instance.instance.instanceId,refreshToken:refreshToken});
-getLocal('dataku');
+var cookie = req.cookies.cookieName;
+	console.log(cookie);
+  if (cookie === undefined) {
+    res.cookie('cookieName',instance, { maxAge: 900000, httpOnly: true });
+    console.log('cookie created successfully');
+  } else {
+	  res.cookie('cookieName',instance, { maxAge: 900000, httpOnly: true }); //timpa bae
+    // yes, cookie was already present 
+    console.log('cookie exists', cookie);
+  } 
+  //next(); // <-- important!
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
 
     res.render('pages/login', {  title: 'Wix Application', 
@@ -274,8 +287,22 @@ getLocal('dataku');
     res.status(500);
     return;
   }});
-
+app.get('/logins', (req, res) => {
+	var cookie = req.cookies.cookieName;
+	console.log(cookie);
+	//console.log("asu");
+	//var a = loadkota();
+  //console.log(a);
+  console.log("getku "+req.query.appId);
+//getLocal('dataku');
+  
+  res.render('pages/login', {  title: 'start', app_id:'bejo'});
+  //console.log(Wix.Utils.getInstanceId());
+  //res.status(200).send('Hello Wix asik!');
+});
 app.get('/', (req, res) => {
+	
+	
 	//console.log("asu");
 	//var a = loadkota();
   //console.log(a);
