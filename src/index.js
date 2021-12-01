@@ -64,7 +64,7 @@ client.query('SELECT * FROM ongkir7;', (err, res) => {
 
 getLocal('dataku');
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
@@ -161,21 +161,12 @@ app.post('/webhook-callback', (req, res) => {
 });
 
 app.post('/order', async(req, res) => {
-  var a = await loadkota();
+  //var a = await loadkota();
   //console.log(a);
   const authorizationCode = req.query.code;
   console.log("code "+authorizationCode);
   console.log('got webhook order event from Wix!', req.body);
   console.log("===========================");
-  console.log("app id ",APP_ID);
-  console.log("app secret ",APP_SECRET);
-  console.log("public key ",PUBLIC_KEY);
-  const refreshToken = req.query.token;
-
-  console.log("refreshToken = " + refreshToken);
-  //const authorizationCode = req.query.code;
-  audcod = authorizationCode;
-  console.log("authorizationCode = " + authorizationCode);
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData =  JSON.parse(data.data);
   const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
@@ -197,17 +188,8 @@ app.post('/order', async(req, res) => {
 });
 
 app.post('/cart', (req, res) => {
-  console.log('got webhook event from Wix!', req.body);
-  console.log("===========================");
-  console.log("app id ",APP_ID);
-  console.log("app secret ",APP_SECRET);
-  console.log("public key ",PUBLIC_KEY);
-  const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
-  const parsedData =  JSON.parse(data.data);
-  const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
-  console.log('webhook event data after verification:', prettyData);
-  incomingWebhooks.push({body: prettyData, headers: req.headers});
-  res.send(req.body);
+  console.log("webhook "+req.body) // Call your action on the request here
+  res.status(200).end() // Responding is important
 });
 
 app.get('/signup', (req, res) => {
