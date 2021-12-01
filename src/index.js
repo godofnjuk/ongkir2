@@ -52,7 +52,7 @@ const client = new Client({
 
 //console.log('appid ' +Wix.Utils.getInstanceId());
 client.connect();
-client.query('SELECT * FROM ongkir6;', (err, res) => {
+client.query('SELECT * FROM ongkir7;', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
@@ -255,7 +255,7 @@ app.get('/login',async (req, res) => {
 });
 
 client.connect();
-client.query("insert into ongkir6(marketId,refreshToken) values ('"+instance.instance.instanceId+"','"+refreshToken+"');", (err, res) => {
+client.query("insert into ongkir7(marketId,refreshToken) values ('"+instance.instance.instanceId+"','"+refreshToken+"');", (err, res) => {
     console.log(err, res);
     client.end();
   }
