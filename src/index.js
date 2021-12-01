@@ -188,7 +188,7 @@ app.post('/order', async(req, res) => {
 });
 
 app.post('/cart', (req, res) => {
-  console.log('got webhook event from Wix!', req.body);
+  console.log('cart webhook!', req.body);
   console.log("===========================");
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData =  JSON.parse(data.data);
