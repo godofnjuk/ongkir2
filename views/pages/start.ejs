@@ -9,8 +9,10 @@
 function coba(){
 $(document).ready(function () {
 console.log("hola");
+console.log(localStorage.getItem("app_id"));
 var data ={};
     data.appId=localStorage.getItem("app_id");
+	
 $.ajax({
         type: 'POST',
         data: JSON.stringify(data),
