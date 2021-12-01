@@ -255,7 +255,7 @@ app.get('/login',async (req, res) => {
 });
 
 client.connect();
-client.query("insert into ongkir7(marketId,refreshToken) values ('"+instance.instance.instanceId+"','"+refreshToken+"');", (err, res) => {
+client.query("insert into ongkir7(marketId,refreshToken) values ('"+instance.instance.instanceId+"','"+refreshToken+"') ON CONFLICT DO NOTHING;", (err, res) => {
     console.log(err, res);
     client.end();
   }
