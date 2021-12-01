@@ -190,10 +190,6 @@ app.post('/order', async(req, res) => {
 app.post('/cart', (req, res) => {
   console.log('cart webhook!', req.body);
   console.log("===========================");
-  const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
-  const parsedData =  JSON.parse(data.data);
-  const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
-  console.log('webhook event data after verification:', prettyData);
   incomingWebhooks.push({body: prettyData, headers: req.headers});
   //res.send(req.body);
   res.status(200).end();
