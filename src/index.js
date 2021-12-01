@@ -263,10 +263,10 @@ client.query("insert into ongkir6(marketId,refreshToken) values ('"+instance.ins
 var cookie = req.cookies.cookieName;
 	console.log(cookie);
   if (cookie === undefined) {
-    res.cookie('cookieName',instance, { maxAge: 900000, httpOnly: true });
+    res.cookie('cookieName',instance.instance.instanceId, { maxAge: 900000, httpOnly: true });
     console.log('cookie created successfully');
   } else {
-	  res.cookie('cookieName',instance, { maxAge: 900000, httpOnly: true }); //timpa bae
+	  res.cookie('cookieName',instance.instance.instanceId, { maxAge: 900000, httpOnly: true }); //timpa bae
     // yes, cookie was already present 
     console.log('cookie exists', cookie);
   } 
