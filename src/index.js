@@ -192,6 +192,7 @@ app.post('/cart', (req, res) => {
   console.log('stringify '+JSON.stringify(req.body));
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData = JSON.parse(data.data);
+  const prettyData = {...data, data: {...parsedData, data: JSON.parse(parsedData.data)}};
   //console.log('parsed '+JSON.stringify(parsedData));
   console.log("===========================");
   //incomingWebhooks.push({body: prettyData, headers: req.headers});
