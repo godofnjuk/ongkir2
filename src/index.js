@@ -268,7 +268,7 @@ client.query("insert into ongkir7(marketId,refreshToken) values ('"+instance.ins
 
     // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
 
-    res.render('pages/login', {  title: 'Wix Application', 
+    res.render('login', {  title: 'Wix Application', 
                               app_id: APP_ID,
                               site_display_name: instance.site.siteDisplayName,
                               instance_id: instance.instance.instanceId, 
@@ -282,19 +282,6 @@ client.query("insert into ongkir7(marketId,refreshToken) values ('"+instance.ins
     res.status(500);
     return;
   }});
-app.get('/logins', (req, res) => {
-	//var cookie = req.cookies.cookieName;
-	//console.log("cookiesku ="+cookie.instance.instanceId);
-	//console.log("asu");
-	//var a = loadkota();
-  //console.log(a);
-  //console.log("getku "+req.query.appId);
-//getLocal('dataku');
-  
-  res.render('pages/login', {  title: 'start', app_id:'bejo'});
-  //console.log(Wix.Utils.getInstanceId());
-  //res.status(200).send('Hello Wix asik!');
-});
 app.get('/', (req, res) => {
 	
 	
@@ -304,7 +291,7 @@ app.get('/', (req, res) => {
   console.log("getku "+req.query.appId);
 //getLocal('dataku');
   
-  res.render('pages/start', {  title: 'start', appId:'bejo'});
+  res.render('start', {  title: 'start', appId:'bejo'});
   //console.log(Wix.Utils.getInstanceId());
   //res.status(200).send('Hello Wix asik!');
 });
@@ -315,7 +302,7 @@ app.post('/', (req, res) => {
 	//var a = loadkota();
   //console.log(a);
 
-  res.render('pages/start', {  title: 'start', name:'bejo'});
+  res.render('start', {  title: 'start', name:'bejo'});
   //console.log(Wix.Utils.getInstanceId());
   //res.status(200).send('Hello Wix asik!');
 });
