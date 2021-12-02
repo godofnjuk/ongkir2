@@ -189,6 +189,9 @@ app.post('/order', async(req, res) => {
 
 app.post('/cart', (req, res) => {
   console.log('cart webhook!', req.body);
+  console.log('stringify '+JSON.stringify(req.body));
+  const parsedData = JSON.parse(req.body.data);
+  console.log('parsed '+JSON.stringify(parsedData));
   console.log("===========================");
   //incomingWebhooks.push({body: prettyData, headers: req.headers});
   //res.send(req.body);
