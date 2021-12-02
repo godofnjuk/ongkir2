@@ -190,7 +190,7 @@ app.post('/order', async(req, res) => {
 app.post('/cart', (req, res) => {
   console.log('cart webhook!', req.body);
   console.log("===========================");
-  incomingWebhooks.push({body: prettyData, headers: req.headers});
+  //incomingWebhooks.push({body: prettyData, headers: req.headers});
   //res.send(req.body);
   res.status(200).end();
 });
