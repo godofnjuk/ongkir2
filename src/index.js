@@ -67,7 +67,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'statics')));
 
 function simpanLocal (nama,b){
@@ -189,7 +189,7 @@ app.post('/order', async(req, res) => {
 
 app.post('/cart', (req, res) => {
   console.log('cart webhook!', req.body);
-  console.log('stringify '+JSON.stringify(req.body));
+  //console.log('stringify '+JSON.stringify(req.body));
   const data = jwt.verify(req.body, PUBLIC_KEY,{ algorithms: ["RS256"] });
   const parsedData = JSON.parse(data.data);
   console.log(JSON.stringify(parsedData));
